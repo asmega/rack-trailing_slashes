@@ -12,9 +12,9 @@ module Rack::TrailingSlashes
       lambda { |env| [200, {}, "root app"] }
     end
 
-    context 'when there is no trailing slash' do
+    context 'when root path' do
       it 'passes thru' do
-        get ''
+        get '/'
         expect(last_response.body).to include('root app')
       end
     end
