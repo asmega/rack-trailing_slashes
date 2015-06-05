@@ -18,5 +18,12 @@ module Rack::TrailingSlashes
         expect(last_response.body).to include('root app')
       end
     end
+
+    context 'when there is no trailing slash' do
+      it 'passes thru' do
+        get '/foo'
+        expect(last_response.body).to include('root app')
+      end
+    end
   end
 end
