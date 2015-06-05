@@ -25,5 +25,23 @@ module Rack::TrailingSlashes
         expect(last_response.body).to include('root app')
       end
     end
+
+    context 'when there is a trailing slash' do
+      it '301 redirects' do
+        get '/foo/'
+        expect(last_response.status).to eql(301)
+      end
+
+      it 'redirects to location without trailing slash' do
+        get '/foo/'
+        expect(last_response.headers['Location']).to eql('/foo')
+      end
+
+      it 'includes redirect message' do
+        get '/foo/'
+        expected = "Redirecting to <a href=\"/foo\">/foo</a>"
+        expect(last_response.body).to eql(expected)
+      end
+    end
   end
 end
