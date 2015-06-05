@@ -1,7 +1,7 @@
 require "rack/trailing_slashes/version"
+require "rack/trailing_slashes/middleware"
 
 module Rack
   module TrailingSlashes
-    # Your code goes here...
   end
 end
