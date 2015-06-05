@@ -1,11 +1,13 @@
 module Rack::TrailingSlashes
   class Middleware
+    TRAILING_SLASHES_REGEX = /(.+?)(\/+)$/
+
     def initialize(app)
       @app = app
     end
 
     def call(env)
-      if env['PATH_INFO'].match /(.+?)(\/+)$/
+      if env['PATH_INFO'].match(TRAILING_SLASHES_REGEX)
         desired_path = $1
         [301, {'Location' => desired_path}, redirect_message(desired_path)]
       else
