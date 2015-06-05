@@ -7,7 +7,7 @@ module Rack::TrailingSlashes
     end
 
     def call(env)
-      if env['PATH_INFO'].match(TRAILING_SLASHES_REGEX)
+      if env['REQUEST_METHOD'] == 'GET' && env['PATH_INFO'].match(TRAILING_SLASHES_REGEX)
         desired_path = $1
         [301, {'Location' => desired_path}, redirect_message(desired_path)]
       else

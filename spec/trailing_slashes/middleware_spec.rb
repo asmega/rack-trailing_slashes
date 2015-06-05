@@ -62,5 +62,17 @@ module Rack::TrailingSlashes
         expect(last_response.body).to eql(expected)
       end
     end
+
+    [:put, :post, :patch, :delete, :options, :head].each do |type|
+      context "when a #{type} request" do
+        before :each do
+          send(type, '/foo/')
+        end
+
+        it 'passes thru' do
+          expect(last_response.body).to include('root app')
+        end
+      end
+    end
   end
 end
