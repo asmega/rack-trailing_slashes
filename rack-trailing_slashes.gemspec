@@ -8,9 +8,9 @@ Gem::Specification.new do |spec|
   spec.version       = Rack::TrailingSlashes::VERSION
   spec.authors       = ["Phil Lee"]
   spec.email         = ["asmega@ph-lee.com"]
-  spec.summary       = %q{TODO: Write a short summary. Required.}
-  spec.description   = %q{TODO: Write a longer description. Optional.}
-  spec.homepage      = ""
+  spec.summary       = "Rack middleware to handle redirects for trailing slashes"
+  spec.description   = "Rack middleware to improve seo by reducing duplicate content from your website"
+  spec.homepage      = "https://github.com/asmega/rack-trailing_slashes"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
