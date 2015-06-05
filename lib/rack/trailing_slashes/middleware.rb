@@ -1,7 +1,11 @@
 module Rack::TrailingSlashes
   class Middleware
+    def initialize(app)
+      @app = app
+    end
+
     def call(env)
-      [200, {}, '']
+      @app.call(env)
     end
   end
 end
