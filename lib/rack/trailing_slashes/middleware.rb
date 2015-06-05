@@ -5,7 +5,7 @@ module Rack::TrailingSlashes
     end
 
     def call(env)
-      if env['PATH_INFO'].match /(.+)\/$/
+      if env['PATH_INFO'].match /(.+?)(\/+)$/
         desired_path = $1
         [301, {'Location' => desired_path}, redirect_message(desired_path)]
       else
